@@ -1,17 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-import Header from './Header.jsx';
+// Pages
+import ActivityDetail from "./app/pages/ActivityDetail.jsx";
+import ActivityFeed from "./app/pages/ActivityFeed.jsx";
+
+import theme from "./app/theme/index.js";
+const defaultTheme = createTheme(theme);
 
 const App = () => {
   return (
-    <div className='container'>
-      <Header/>
-      <div className="container-view">Some activities should be here</div>
-    </div>
+    <BrowserRouter>
+      <ThemeProvider theme={defaultTheme}>
+        <Routes>
+          <Route path="/" element={<ActivityFeed />} />
+          <Route path="/detail/:id" element={<ActivityDetail />} />
+        </Routes>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 };
-
-ReactDOM.render(<App/>, document.getElementById('app'));
 
 export default App;

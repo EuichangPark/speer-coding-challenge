@@ -75,7 +75,7 @@ const ActivityItem = ({ data, handleArchived }) => {
       </Box>
       <Box onClick={(e) => e.stopPropagation()}>
         <IconButton sx={{ p: 1 }} onClick={handleMore}>
-          <MoreVert sx={{ width: 10, height: 10 }} />
+          <MoreVert sx={{ width: 14, height: 14 }} />
         </IconButton>
         <Popover
           open={Boolean(anchorEl)}

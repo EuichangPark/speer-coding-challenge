@@ -1,20 +1,26 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Box,
   Card,
-  CardContent,
   CardMedia,
   Chip,
+  IconButton,
   Typography,
 } from "@mui/material";
-import { CallReceived, CallMissed, Voicemail } from "@mui/icons-material";
+import {
+  CallReceived,
+  CallMissed,
+  Voicemail,
+  ArrowBack,
+} from "@mui/icons-material";
 
 import Layouts from "../components/Layouts.jsx";
 import { api } from "../config/axios.js";
 
 const ActivityDetail = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [activity, setActivity] = useState([]);
 
   useEffect(() => {
@@ -68,7 +74,22 @@ const ActivityDetail = () => {
   return (
     <Layouts>
       <Box sx={{ p: 1, mt: 3 }}>
-        <Card>
+        <Card sx={{ position: "relative" }}>
+          <IconButton
+            onClick={() => navigate(-1)}
+            sx={{
+              position: "absolute",
+              top: ".5rem",
+              left: ".5rem",
+              backgroundColor: "common.white",
+              borderRadius: "100%",
+              "&:hover svg": {
+                color: "common.white",
+              },
+            }}
+          >
+            <ArrowBack sx={{ color: "common.black" }} />
+          </IconButton>
           <CardMedia
             component="img"
             alt="green iguana"
